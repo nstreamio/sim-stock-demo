@@ -1,0 +1,33 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: demo-sim-stocks
+  namespace: demo-sim-stocks
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      demo: sim-stocks
+  serviceName: demo
+  template:
+    metadata:
+      labels:
+        demo: sim-stocks
+    spec:
+      containers:
+        - image: DOCKER_IMAGE
+          imagePullPolicy: Always
+          name: demo
+          ports:
+            - containerPort: 9001
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 1Gi
+            requests:
+              cpu: 250m
+              memory: 512Mi
+
+
