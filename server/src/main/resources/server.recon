@@ -1,12 +1,22 @@
 @kernel(class: "swim.meta.MetaKernel")
 @kernel(class: "swim.service.web.UiRouter")
 
+provisions: {
+  @provision("consumer") {
+    class: "nstream.adapter.common.provision.PropertiesProvision",
+    config: "consumer.properties"
+  }
+}
+
 stock: @fabric {
     @plane(class: "io.nstream.demos.stocks.StockPlane")
 
-    @node {
-        pattern: "/simDataLoader"
-        @agent(class: "io.nstream.demos.stocks.data.DataLoaderAgent")
+    uri: "/consumer"
+    @agent(class: "nstream.adapter.confluent.ConfluentIngestingPatch") {
+      confluentIngressConf: @kafkaIngressSettings {
+        consumerPropertiesProvisionName: "consumer"
+         laneUri: "status"
+      }
     }
 
     @node {

@@ -7,18 +7,14 @@
     <properties>
         <maven.compiler.target>17</maven.compiler.target>
         <maven.compiler.source>17</maven.compiler.source>
-        <swimos.version>4.2.14</swimos.version>
+        <swimos.version>4.1.0.12</swimos.version>
+        <nstream.version>4.6.9</nstream.version>
+        <confluent.version>7.5.1</confluent.version>
         <slf4j.version>2.0.7</slf4j.version>
     </properties>
 
 
-
     <dependencies>
-        <dependency>
-            <groupId>org.java-websocket</groupId>
-            <artifactId>Java-WebSocket</artifactId>
-            <version>1.5.4</version>
-        </dependency>
         <dependency>
             <groupId>org.swimos</groupId>
             <artifactId>swim-server</artifactId>
@@ -30,9 +26,24 @@
             <version>${swimos.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.swimos</groupId>
-            <artifactId>swim-client</artifactId>
-            <version>${swimos.version}</version>
+            <groupId>io.nstream</groupId>
+            <artifactId>nstream-adapter-runtime</artifactId>
+            <version>${nstream.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.nstream</groupId>
+            <artifactId>nstream-adapter-common</artifactId>
+            <version>${nstream.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.nstream</groupId>
+            <artifactId>nstream-adapter-confluent</artifactId>
+            <version>${nstream.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.confluent</groupId>
+            <artifactId>kafka-avro-serializer</artifactId>
+            <version>${confluent.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -46,16 +57,9 @@
         </dependency>
     </dependencies>
     <repositories>
-        <!-- Added to get the Atmosphere 1.1.0-SNAPSHOT, can be removed when 1.1.0 is released -->
         <repository>
-            <id>oss.sonatype.org-snapshot</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
+            <id>confluent</id>
+            <url>https://packages.confluent.io/maven</url>
         </repository>
     </repositories>
 

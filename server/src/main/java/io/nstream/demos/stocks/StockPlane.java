@@ -16,4 +16,5 @@ public class StockPlane extends AbstractPlane {
     log.info("Running Stock Plane");
     kernel.run();
   }
+
 }
