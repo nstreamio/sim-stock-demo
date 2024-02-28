@@ -5,15 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "compile": "tsc",
+    "bundle": "vite build",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
     "@swim/client": "4.0.0-dev.20230923",
-    "@swim/core": "4.0.0-dev.20230923",
-    "@swim/structure": "4.0.0-dev.20230923",
-    "@swim/ui": "4.0.0-dev.20230923",
     "ag-grid-react": "31.0.3",
     "ag-grid-community": "31.0.3",
     "react": "^18.2.0",
