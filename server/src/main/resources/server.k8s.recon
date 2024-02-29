@@ -1,0 +1,40 @@
+@kernel(class: "swim.meta.MetaKernel")
+@kernel(class: "swim.service.web.UiRouter")
+
+provisions: {
+  @provision("consumer") {
+    class: "nstream.adapter.common.provision.PropertiesProvision",
+    config: "/secret/confluent/consumer.properties"
+  }
+}
+
+stock: @fabric {
+    @plane(class: "io.nstream.demos.stocks.StockPlane")
+
+    uri: "/consumer"
+    @agent(class: "nstream.adapter.confluent.ConfluentIngestingPatch") {
+      confluentIngressConf: @kafkaIngressSettings {
+        consumerPropertiesProvisionName: "consumer"
+         laneUri: "status"
+      }
+    }
+
+    @node {
+        pattern: "/stock/:symbol"
+        @agent(class: "io.nstream.demos.stocks.agents.StockAgent")
+    }
+
+    @node {
+        pattern: "/symbols"
+        @agent(class: "io.nstream.demos.stocks.agents.SymbolsAgent")
+    }
+
+}
+
+@web(port: 9001) {
+    space: "stock"
+    @websocket {
+        serverCompressionLevel: 0# -1 = default; 0 = off; 1-9 = deflate level
+        clientCompressionLevel: 0# -1 = default; 0 = off; 1-9 = deflate level
+    }
+}

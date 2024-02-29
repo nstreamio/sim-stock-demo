@@ -29,3 +29,13 @@ npm run dev
 ```
 
 Then head to `localhost:5173` to see it in action.
+
+# Deploying to kubernetes
+
+Edit the consumer.properties file to match the settings needed to connect to confluent cloud.
+
+```bash
+# If the secret already exists
+kubectl delete secret -n demo-stocks-simulated consumer-properties
+kubectl update secret generic -n demo-stocks-simulated consumer-properties --from-file=consumer.properties
+```

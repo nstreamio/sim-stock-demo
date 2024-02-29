@@ -1,3 +1,5 @@
 target/
 .idea/
 server/*.iml
+k8s.secret.yml
+/consumer.properties
