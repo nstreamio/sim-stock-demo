@@ -2,18 +2,18 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: demo-sim-stocks
-  namespace: demo-sim-stocks
+  name: demo-stocks-simulated
+  namespace: demo-stocks-simulated
 spec:
   replicas: 1
   selector:
     matchLabels:
-      demo: sim-stocks
+      demo: stocks-simulated
   serviceName: demo
   template:
     metadata:
       labels:
-        demo: sim-stocks
+        demo: stocks-simulated
     spec:
       containers:
         - image: DOCKER_IMAGE

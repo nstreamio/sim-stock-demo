@@ -15,11 +15,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.java-websocket</groupId>
-            <artifactId>Java-WebSocket</artifactId>
-            <version>1.5.4</version>
-        </dependency>
-        <dependency>
             <groupId>org.swimos</groupId>
             <artifactId>swim-server</artifactId>
             <version>${swimos.version}</version>
@@ -27,11 +22,6 @@
         <dependency>
             <groupId>org.swimos</groupId>
             <artifactId>swim-meta</artifactId>
-            <version>${swimos.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.swimos</groupId>
-            <artifactId>swim-client</artifactId>
             <version>${swimos.version}</version>
         </dependency>
         <dependency>
@@ -85,7 +75,7 @@
                         </auth>
                     </to>
                     <container>
-                        <mainClass>io.nstream.demos.stocks.EntryPoint</mainClass>
+                        <mainClass>io.nstream.demos.stocks.StockPlane</mainClass>
                         <ports>
                             <port>9001/tcp</port>
                         </ports>

@@ -18,7 +18,7 @@ You may optionally configure an environment variable, `NUM_STOCKS`, which will s
 
 ```bash
 cd ../server
-TOKEN=abcdefghijklmnopqrst mvn clean compile exec:java
+mvn clean compile exec:java
 ```
 
 ## Start the UI
