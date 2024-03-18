@@ -29,7 +29,7 @@ public class StockAgent extends AbstractAgent {
     final Record record = Record.create(4)
           .slot("timestamp", System.currentTimeMillis())
           .slot("price", currentPrice)
-          .slot("volume", toTwoDecimalPlaces(Math.random() * 1000))
+          .slot("volume", Math.pow(Math.random() * 400, 3))
           .slot("bid", toTwoDecimalPlaces(Math.random() * 100))
           .slot("ask", toTwoDecimalPlaces(Math.random() * 100))
           .slot("movement", toTwoDecimalPlaces(movement));
